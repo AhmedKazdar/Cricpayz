@@ -1,6 +1,8 @@
 import React from "react"; 
 import "./HomePage.css";
 import { Link, useNavigate } from "react-router-dom"
+import Hero3DBackground from "../components/Hero3DBackground";
+import Line from "../assets/img/L2.png"
 
 export default function HomePage() {
     const navigate = useNavigate();
@@ -9,9 +11,12 @@ export default function HomePage() {
             <main className="homepage">
 
                 {/* HERO */}
-                <section className="homepage_hero">
+              <section className="homepage_hero">
+  <Hero3DBackground />
+  <div className="homepage_hero_content">
     <h1 className="homepage_title">Welcome to Cricpayz</h1>
     <p className="homepage_subtitle">Your future is here</p>
+  </div>
 </section>
 
                 {/* SERVICES */}
@@ -43,7 +48,6 @@ export default function HomePage() {
                         <li>💡 Creative team with a passion for design & tech</li>
                     </ul>
                 </section>
-
                 {/* CTA */}
                 <section className="homepage_cta">
                     <h2>Ready to grow your brand?</h2>

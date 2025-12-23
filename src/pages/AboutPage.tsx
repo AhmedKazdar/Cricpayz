@@ -1,16 +1,21 @@
 // src/pages/AboutPage.tsx
 import React from "react";
 import "./AboutPage.css";
-import { NavBar } from "../components/NavBar";
+import LogoF from "../assets/img/Facebook.png";
+import Logo from "../assets/img/Instagram.png"
+import LogoJS from "../assets/img/JS.png"
+
 
 export default function AboutPage() {
   return (
    
     <main className="about">
-
       {/* HERO */}
       <section className="about_hero">
         <h1 className="about_title">About Cricpayz</h1>
+         <div className="LogoF">
+          <img src={LogoF}/>
+        </div>
         <p className="about_subtitle">
           A development & marketing company shaping bold digital experiences.
         </p>
@@ -25,7 +30,6 @@ export default function AboutPage() {
           design, and strategy to help businesses grow in a fast‑moving world.
         </p>
       </section>
-
       {/* WHO WE ARE */}
       <section className="about_section">
         <h2 className="section_heading">Who We Are</h2>
@@ -56,14 +60,15 @@ export default function AboutPage() {
             <h3>Quality</h3>
             <p>Pixel‑perfect design, smooth UX, and reliable performance.</p>
           </div>
-
           <div className="value_card">
             <h3>Growth</h3>
             <p>Marketing strategies that help businesses scale with confidence.</p>
           </div>
         </div>
       </section>
-
+ <div className="Logo">
+   <img src={Logo} alt="Background illustration" /> 
+</div>
       {/* TEAM SECTION */}
       <section className="about_team">
         <h2 className="section_heading">Meet Our Team</h2>
@@ -94,7 +99,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
+      <div className="LogoJS">
+        <img src={LogoJS} alt="Background illustration" /> 
+     </div>
     </main>
   );
 }

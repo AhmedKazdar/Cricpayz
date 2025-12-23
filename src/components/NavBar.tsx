@@ -49,7 +49,7 @@ export const NavBar: React.FC = () => {
         >
          <span className={`bar ${isOpen ? "bar--top-open" : ""}`}></span>
           <span className={`bar ${isOpen ? "bar--mid-open" : ""}`}></span>
-          <span className={`bar ${isOpen ? "bar--bot-open" : ""}`}></span>
+          <span className={`bar ${isOpen ? "bar--bot-open" : ""}`}></span> 
         </button>
         </div>
 

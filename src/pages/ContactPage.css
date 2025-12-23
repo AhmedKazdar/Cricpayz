@@ -1,86 +1,237 @@
 /* MAIN WRAPPER */
-.contact {
-  padding: 4rem 2rem;
-  min-height: 100vh;
-  text-align: center;
+* {
+  box-sizing: border-box;
+}
 
+.contact {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  text-align: center;
+  overflow: hidden; /* ⬅️ KILLS horizontal scroll */
   background: linear-gradient(
     135deg,
     #0a1a3f 0%,
     #292d65 40%,
     #e83c45 100%
   );
-
   color: #ffffff;
-  animation: fadeIn 1s ease-out forwards;
-  opacity: 0;
 }
 
 /* HERO */
 .contact_hero {
   max-width: 900px;
   margin: 0 auto 4rem auto;
+    text-align: center;
+  animation: fadeUp 1.2s ease forwards;
+  transform: translateY(20px);
+  opacity: 0;
 }
 
 .contact_title {
-  font-size: 3rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
   background: linear-gradient(90deg, #ff003c, #1e4fff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+    position: relative;
+  display: inline-block;
+  transform-style: preserve-3d;
+  animation: float3D 4s ease-in-out infinite;
+}
+
+.HandL{
+  position: absolute;
+  right: 0;
+  top: -40px;
+  max-width: 120px;
+  pointer-events: none;
+}
+
+.HandL img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.Hand{
+  position: absolute;
+  left: -5%;
+  bottom: 0;
+  max-width: 180px;
+  pointer-events: none;
+}
+
+.Hand img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.Line{
+ position: absolute;
+  right: 0;
+  bottom: 0;
+  max-width: 180px;   /* ❌ remove vw */
+  width: 100%;
+  pointer-events: none;
+}
+
+.contact_title::after{
+  content: "Get In Touch";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: -1;
+  color: rgba(0, 0, 0, 0.25);
+  filter: blur(2px);
 }
 
 .contact_subtitle {
-  font-size: 1.3rem;
-  margin-top: 1rem;
+font-size: 1.35rem;
+  margin-top: 1.2rem;
   color: #e2e8f0;
   opacity: 0.9;
+  animation: fadeIn 2s ease forwards;
+}
+
+/* Glow Pulse */
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 10px rgba(255,0,60,0.4); }
+  50% { text-shadow: 0 0 20px rgba(30,79,255,0.6); }
+  100% { text-shadow: 0 0 10px rgba(255,0,60,0.4); }
+}
+
+/* Floating 3D Motion */
+@keyframes float3D {
+  0% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
+  50% { transform: translateY(-10px) rotateX(6deg) rotateY(-6deg); }
+  100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
+}
+
+/* Fade Up Entrance */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Subtitle Fade */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* CONTACT SECTION */
+.contact_section {
+  margin-top: 3rem;
+  animation: fadeUp 1.2s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 /* CONTACT CARD */
-.contact_section {
-  margin-top: 3rem;
-}
-
 .contact_card {
   max-width: 700px;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.08);
-  padding: 2rem;
-  border-radius: 14px;
-  backdrop-filter: blur(6px);
-  transition: transform 0.3s ease, background 0.3s ease;
+  padding: 2.5rem;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  animation: floatCard 5s ease-in-out infinite;
 }
 
+/* Animated border shine */
+.contact_card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 2px;
+  background: linear-gradient(120deg, #ff003c, #1e4fff, #ff003c);
+  background-size: 300% 300%;
+  animation: borderGlow 6s ease infinite;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+/* Hover effect */
 .contact_card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-10px) scale(1.02);
   background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
 }
 
+/* Heading */
 .contact_heading {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.2rem;
+  font-weight: 800;
   margin-bottom: 1rem;
+  text-align: center;
 
   background: linear-gradient(90deg, #ff003c, #1e4fff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  animation: glowPulse 2.5s infinite ease-in-out;
 }
 
+/* Text */
 .contact_text {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: #f1f5f9;
-  opacity: 0.9;
-  margin-bottom: 1.5rem;
+  opacity: 0.95;
+  margin-bottom: 1.8rem;
+  text-align: center;
 }
 
+/* Details */
 .contact_details p {
-  font-size: 1.1rem;
-  margin: 0.4rem 0;
+  font-size: 1.15rem;
+  margin: 0.5rem 0;
   color: #e2e8f0;
+  text-align: center;
 }
+
+/* --- ANIMATIONS --- */
+
+/* Fade Up Entrance */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating Card */
+@keyframes floatCard {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+/* Neon Glow Pulse */
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 10px rgba(255,0,60,0.4); }
+  50% { text-shadow: 0 0 20px rgba(30,79,255,0.6); }
+  100% { text-shadow: 0 0 10px rgba(255,0,60,0.4); }
+}
+
+/* Animated Gradient Border */
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 
 /* FORM */
 .contact_form_section {
@@ -162,7 +313,7 @@
 
   .contact_input,
 .contact_textarea {
-  width: 92%;
+  width: 100%;
   padding: 1rem;
   border-radius: 10px;
   border: none;
@@ -170,5 +321,18 @@
   background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
   outline: none;
+}
+.Hand{
+  position: absolute;
+  left: -120px;
+  bottom: 0;
+  max-width: 180px;
+  pointer-events: none;
+}
+
+.Hand img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 }

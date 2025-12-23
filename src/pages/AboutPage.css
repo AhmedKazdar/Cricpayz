@@ -1,45 +1,143 @@
 /* MAIN WRAPPER */
+* {
+  box-sizing: border-box;
+}
 .about {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
   padding: 4rem 2rem;
   text-align: center;
-  min-height: 100vh;
-
-  /* Same gradient as Home */
+  overflow: hidden; /* ⬅️ important */
   background: linear-gradient(
     135deg,
     #0a1a3f 0%,
     #292d65 40%,
     #e83c45 100%
   );
-
   color: #ffffff;
-  animation: fadeIn 1s ease-out forwards;
-  opacity: 0;
 }
+
 
 /* HERO */
 .about_hero {
   max-width: 900px;
   margin: 0 auto 4rem auto;
+  text-align: center;
+  animation: fadeUp 1.2s ease forwards;
+  transform: translateY(20px);
+  opacity: 0;
 }
 
-.about_title {
-  font-size: 3rem;
-  font-weight: 800;
-  letter-spacing: 1px;
+.LogoF {
+  position: absolute;
+  left: 1;
+  opacity: 0.15;
+  transform: translateX(-50%);
+  top: 100%;
+  pointer-events: none;
+}
 
-  /* Same gradient text as Home */
+.LogoF img {
+  max-width: 120px;
+  width: 100%;
+  height: auto;
+}
+
+
+.LogoJS {
+  position: absolute;
+  left: 0;
+  opacity: 0.1;
+  transform: translateX(-50%);
+  bottom:0;
+  pointer-events: none;
+}
+
+.LogoJS img {
+  max-width: 120px;
+  width: 100%;
+  height: auto;
+}
+
+.Logo {
+  position: absolute;
+  top: 60%;
+  right: 0;
+  max-width: 280px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 0
+}
+
+.Logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* 3D Gradient Title */
+.about_title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
   background: linear-gradient(90deg, #ff003c, #1e4fff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  position: relative;
+  display: inline-block;
+  transform-style: preserve-3d;
+  animation: float3D 4s ease-in-out infinite;
 }
 
+/* 3D Shadow Layer */
+.about_title::after {
+  content: "About Cricpayz";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: -1;
+  color: rgba(0, 0, 0, 0.25);
+  filter: blur(2px);
+}
+
+/* Subtitle */
 .about_subtitle {
-  font-size: 1.3rem;
-  margin-top: 1rem;
+  font-size: 1.35rem;
+  margin-top: 1.2rem;
   color: #e2e8f0;
   opacity: 0.9;
+  animation: fadeIn 2s ease forwards;
 }
+
+/* Glow Pulse */
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 10px rgba(255,0,60,0.4); }
+  50% { text-shadow: 0 0 20px rgba(30,79,255,0.6); }
+  100% { text-shadow: 0 0 10px rgba(255,0,60,0.4); }
+}
+
+/* Floating 3D Motion */
+@keyframes float3D {
+  0% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
+  50% { transform: translateY(-10px) rotateX(6deg) rotateY(-6deg); }
+  100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
+}
+
+/* Fade Up Entrance */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Subtitle Fade */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 
 /* SECTIONS */
 .about_section {
